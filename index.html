@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Štiri v vrsto</title>
+    <meta charset="utf8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+    <h1 class="naslov">Štiri v vrsto</h1>
+    <div class="row mt-5 mr-0 p-2">
+        <div class="col-sm-4">
+
+            <div class="form-group row">
+                <label for="igralec1input" class="col-sm-3 col-form-label">Igralec 1:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="igralec1input">
+                </div>
+                <div class="col-sm-2">
+                    <img src="images/logo-feri-rumen.png" style="height:50px; width:50px; object-fit: contain;">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="igralec2input" class="col-sm-3 col-form-label">Igralec 2:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="igralec2input">
+                </div>
+                <div class="col-sm-2">
+                    <img src="images/logo-feri-rdec.png" style="height:50px; width:50px; object-fit: contain;">
+                </div>
+            </div>
+            <button class="btn btn-sm btn-warning" id="startGameBtn" onclick="novaigra()">Nova igra</button>
+
+        </div>
+        <div class="col-sm-8 text-center">
+            <div id="naPotezi" style="text-align: center;">na potezi: igralec 1</div>
+            <div id="igralnoPolje">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function tableCreate() {
+        var body = document.getElementById("igralnoPolje");
+        var tbl = document.createElement('table');
+
+        tbl.style.border = '1px solid white';
+        tbl.style.position = 'relative';
+        for (var i = 0; i < 6; i++) {
+            var tr = tbl.insertRow();
+            for (var j = 0; j < 7; j++) {
+
+                var td = tr.insertCell();
+                td.id = j+","+i;
+                // td.appendChild(document.createTextNode('Cell'));
+                td.addEventListener('click', function () {
+                    handlePlay(this.id);
+                });
+                td.style.width = '100px';
+                td.style.height = '100px';
+                td.style.border = '1px solid white';
+            
+            }
+        }
+        body.appendChild(tbl);
+    } 
+</script>
+
+</html>
